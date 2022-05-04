@@ -41,7 +41,10 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(),
       body: Center(
         child: Text(
-          '${BlocProvider.of<CounterCubit>(context).state.count}',
+          '${BlocProvider.of<CounterCubit>(
+            context,
+            listen: true,
+          ).state.counter}',
           style: TextStyle(
             fontSize: 52.0,
           ),
