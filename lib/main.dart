@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<CounterCubit, CounterState>(
+      body: BlocConsumer<CounterCubit, CounterState>(
         listener: (context, state) {
           if (state.counter == 3) {
             showDialog(
@@ -61,18 +61,16 @@ class _MyHomePageState extends State<MyHomePage> {
             );
           }
         },
-        child: BlocBuilder<CounterCubit, CounterState>(
-          builder: (context, state) {
-            return Center(
-              child: Text(
-                '${state.counter}',
-                style: const TextStyle(
-                  fontSize: 52.0,
-                ),
+        builder: (context, state) {
+          return Center(
+            child: Text(
+              '${state.counter}',
+              style: const TextStyle(
+                fontSize: 52.0,
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
